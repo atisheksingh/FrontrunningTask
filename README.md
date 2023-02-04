@@ -46,7 +46,9 @@ once flagged second tx will be frontrunned by the 3rd tx which will pause the mi
 
 5) Transaction with higher gas fees is excuted first and will change the status of the contract to **True**
 
-6) And first tx gas fee should be less then the second tx.
+6) And first tx gas fee should be less then the second tx, Front running is Done.
+
+Please review video and screenshot i have attched with code.
 
 
 Try running some of the following tasks:
@@ -58,8 +60,6 @@ npm run task1
 npm run task2 
 
 ```
-Token.sol
-
 
 ![Screenshot](quil-hash-task-frontrunning-a-tx.png)
 
