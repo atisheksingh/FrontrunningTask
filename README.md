@@ -1,5 +1,12 @@
 # Basic Sample Hardhat Project
 
+
+
+
+
+
+
+
 This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
 
 Try running some of the following tasks:
@@ -30,3 +37,5 @@ We are scanning mempool to find the tx that is "vulnerable", and details around 
 
 Then we will see if the next tx is from the same address and we can it flag it as suspicous , 
 once flagged second tx will be frontrunned by the 3rd tx which will pause the miniting process as we already have "pausable"functionality in the smartcontract.
+
+![Screenshot](quil-hash-task-frontrunning-a-tx.png)
