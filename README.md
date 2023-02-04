@@ -1,41 +1,67 @@
-# Basic Sample Hardhat Project
+# Front-Running a TX with web3 and 
+
+This project demonstrates a basic Front Running of a Transaction. A test for that contract, script to watch mempool of the Goreli Testnet to when a Tx from a particular contract is excuted, and then script will excute another tx to stop the first Tx.
+
+## Tech Stack 
+1) Solidity (lang used for smart contract)
+2) Web3 and ethers (To interact with blockchain )
+3) Hardhat (For testing smart contract)
+4) Express.js (To create environment)
+5) Alchemy  (for Test Node)
 
 
 
 
 
+Goreli testnet address : 0x4fa6c4f5274E1Ef14310e7018e73de6D16245b1c
 
-
-
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
-
-Try running some of the following tasks:
-
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
-Token.sol
-polygon testnet address : 0xcaA2759ca351Fb29a381c3fC878D1deD1F214E54
-
-lib in smart contract :
+lib in ERC20 smart contract :
 1) ERC20
 2) ownable
 3) pausable 
 
+A ERC20 smart contract with reentrancy vulnerable function named as "vulnerable" which mint in the account of the given address parameter,
+it contains Event minting which is used to notify owner that particular function is invoked.
 
-A smart contract with reentrancy vulnerable function named as "vulnerable" which mint in the account of the given address parameter.
-Function also consist with event that will notify owner that particular function is invoked.
-A mail is sent as the notification to owner given mail with details from the latest tx while tx is still in pending.
+## Task-1 : Notify owner for reenterancy 
+using websocket url from alchemy and inserting it with `new ethers.providers.WebSocketProvider(wss)` from ether to render event from contract 
+with a microservice a mail is sent as the notification to owner given mail with details from the mempool of transaction while tx is still in pending.
+scanning mempool to find the tx that is "vulnerable", and details around it.
+Then see if the next tx is from the same address and we can it flag it as suspicous, 
+once flagged second tx will be frontrunned by the 3rd tx which will pause the miniting process as we already have "pausable" functionality in the smartcontract.
 
-We are scanning mempool to find the tx that is "vulnerable", and details around it.
 
-Then we will see if the next tx is from the same address and we can it flag it as suspicous , 
-once flagged second tx will be frontrunned by the 3rd tx which will pause the miniting process as we already have "pausable"functionality in the smartcontract.
+## Task-2 : Front Run Transaction Previously Excuted 
+
+1) Getting contract details to create an instance of the contract , for our example we are using the above contract,
+    vulenerable function is exposed to public but it have a **Modifier** pauseable which ensure the status of the smart contract.
+
+2) if a tx is found from the contract address in mempool scanning , that will tigger function **changepausble** to change the state of contract . 
+    **false** : open to attack
+    **true** : paused and wont allow to mint 
+
+3) sending a tx before the fist tx which should be excuted before the first Tx
+
+4) Gas of the second tx should be more then 75k and less the GasBlock limit.
+
+5) Transaction with higher gas fees is excuted first and will change the status of the contract to **True**
+
+6) And first tx gas fee should be less then the second tx.
+
+
+Try running some of the following tasks:
+
+```shell
+npx hardhat test
+npx hardhat node
+npm run task1 
+npm run task2 
+
+```
+Token.sol
+
 
 ![Screenshot](quil-hash-task-frontrunning-a-tx.png)
+
+
+
