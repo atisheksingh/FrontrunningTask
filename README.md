@@ -56,9 +56,8 @@ Try running some of the following tasks:
 ```shell
 npx hardhat test
 npx hardhat node
-npm run task1 
-npm run task2 
-
+npm run task1  Notify owner with email.
+npm run task2  Front Running 
 ```
 
 ![Screenshot](quil-hash-task-frontrunning-a-tx.png)
