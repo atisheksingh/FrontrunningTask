@@ -69,7 +69,7 @@ npm run task2  Front Running
 
 Above image is showcasing the notification is sent to given address via catching event `miniting` from smart contract after sending a successfully 
 
-![Screenshot](quill-hash-task-frontrunning-a-tx.png)
+![Screenshot](task2.png)
 
 Above image is showcasing front running of the transaction , via websocket using web3js and sending more Gas then previous transaction.
 
