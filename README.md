@@ -71,7 +71,7 @@ Above image is showcasing the notification is sent to given address via catching
 
 ![Screenshot](task2.png)
 
-Above image is showcasing **front running** of the transaction , via websocket using web3js and sending more Gas then previous transaction.
+Above image is showcasing `front running` of the transaction , via websocket using web3js and sending more Gas then previous transaction.
 
 
 
