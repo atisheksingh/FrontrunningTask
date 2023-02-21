@@ -91,7 +91,7 @@ const mintTx = async () => {
 async function getMintEvent() {
     const provider = new ethers.providers.WebSocketProvider(wss);
     const contract = new ethers.Contract(contractAddress, abi, provider);
-    contract.on("minting", (sender, message, value, event) => {
+    contract.on("abc", (sender, message, value, event) => {
 
         let mintingEvent = {
             sender: sender,
@@ -117,7 +117,7 @@ async function MailToOwner() {
 
     const options = {
         from: "rahul.kirte@indicchain.com",
-        to: "atishek.singh@indicchain.com",
+        to: "atishek1@gmail.com",
         subject: "contract is under attack  ",
         text: "contract is under reenterancy attack ."
     };

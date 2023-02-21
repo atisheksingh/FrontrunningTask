@@ -6,11 +6,26 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract TokenContract is ERC20 , Ownable, Pausable {
-
+    address public pri;
     //event minting 
     event minting(address sender, string message);
+
     //mapping for userbalance
     mapping (address => uint256) private userBalances;
+    
+
+
+    event attack(address attacker);
+    // modifier to simluate tx reenterance 
+
+
+    modifier activated(address a){
+    if(pri  == a){
+        emit attack(a);
+    }
+        _;
+        pri = a;
+    }
 
     constructor() ERC20("Test", "TestToken") {
         _mint(msg.sender, 1000000000000000 * 10**decimals());
