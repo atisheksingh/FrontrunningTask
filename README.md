@@ -51,10 +51,18 @@ once flagged second tx will be frontrunned by the 3rd tx which will pause the mi
 
 Please review video and screenshot that are attached with code.
 
+
+## Task-3 : Reenterancy Detection 
+
+Reenterancy is when same address is trying to excute a contract function repeatedly , i have created the modifier in contract to match the transaction executor. if the caller is same as previous the contract will emit an event `attack` with the address of attacker , only and only if the `msg.sender` is same as previous executor.    
+
+
+
 ## Steps 
-1) npm install for installing the dependencies
+1) `npm install` for installing the dependencies
 2) To run Task1 use `npm run task1`
 3) To run Task2 use `npm run task2`
+4) To detect Reenterancy `node task3`
 
 
 Try running some of the following tasks:
