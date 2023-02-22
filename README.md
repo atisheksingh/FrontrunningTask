@@ -54,7 +54,7 @@ Please review video and screenshot that are attached with code.
 
 ## Task-3 : Reenterancy Detection 
 
-Reenterancy is when same address is trying to excute a contract function repeatedly , i have created the modifier in contract to match the transaction executor. if the caller is same as previous the contract will emit an event `attack` with the address of attacker , only and only if the `msg.sender` is same as previous executor.    
+Reentrancy is when same address is trying to excute a contract function repeatedly , i have created the modifier in contract to match the transaction executor. if the caller is same as previous the contract will emit an event `attack` with the address of attacker , only and only if the `msg.sender` is same as previous executor.    
 
 
 
