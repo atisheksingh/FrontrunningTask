@@ -1,4 +1,4 @@
-# Front-Running a TX with web3 and 
+# Front-Running a TX with web3
 
 This project demonstrates a basic Front Running of a Transaction. A test for that contract, script to watch mempool of the Goerli Testnet to when a Tx from a particular contract is executed, and then script will execute another tx to stop the first Tx.
 
